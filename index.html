@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rice Detector — Teachable Machine</title>
+
+  <!-- styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- TF & Teachable Machine -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+</head>
+<body>
+  <header class="header">
+    <h1>Rice Detector</h1>
+    <p class="subtitle">Teachable Machine — Image Classifier (upload or camera)</p>
+  </header>
+
+  <main class="container">
+    <section class="left">
+      <div class="card">
+        <div class="card-title">Camera Preview</div>
+
+        <!-- camera / placeholder box -->
+        <div id="camera-box" class="camera-box" aria-live="polite">
+          <div id="placeholder" class="placeholder">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <path d="M3 7a2 2 0 0 1 2-2h2l1.5-2h5L15 5h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+            <p class="muted">Camera not connected<br/><small>or permission not granted</small></p>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button id="startBtn" class="btn primary" type="button">Start Camera</button>
+          <button id="stopBtn" class="btn" type="button" disabled>Stop Camera</button>
+          <label class="file-label">
+            <input id="uploadInput" type="file" accept="image/*" />
+            <span>Upload Image</span>
+          </label>
+        </div>
+
+        <div class="hint">Tip: Use camera for live detection, or upload an image.</div>
+      </div>
+    </section>
+
+    <aside class="right">
+      <div class="card results-card">
+        <div class="card-title">Predictions</div>
+        <div id="status" class="status">Model not loaded</div>
+        <div id="label-container" class="label-container" aria-live="polite"></div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <small>Place your Teachable Machine `my_model/` folder in the same directory.</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
